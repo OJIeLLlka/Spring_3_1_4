@@ -52,7 +52,7 @@ public class AdminController {
             return "new";
         }
 
-        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toList()));
+        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toSet()));
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         userService.saveUser(user);
         return "redirect:/admin";
@@ -74,7 +74,7 @@ public class AdminController {
         }
 
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toList()));
+        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toSet()));
         userService.updateUser(user);
         return "redirect:/admin";
     }

@@ -5,6 +5,7 @@ import ru.kata.spring.boot_security.demo.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -30,6 +31,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public List<User> getAllUsers() {
         return entityManager.createQuery("select u from User u", User.class).getResultList();
     }
+
 
     public User getUserById(long id) {
         return entityManager.find(User.class, id);

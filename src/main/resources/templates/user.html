@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -23,11 +23,11 @@
   </thead>
   <tbody>
 
-  <td th:text="${id}">id</td>
-  <td th:text="${username}">name</td>
-  <td th:text="${age}">age</td>
-  <td th:text="${email}">email</td>
-  <td th:text="${roles}">roles</td>
+  <td th:utext="${user.id}">id</td>
+  <td th:text="${user.username}">name</td>
+  <td th:text="${user.age}">age</td>
+  <td th:text="${user.email}">email</td>
+  <td th:text="${user.roles}">roles</td>
   </tbody>
 </table>
 
