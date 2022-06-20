@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+    <label for="name">Enter name:</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:orangered" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br/>
+
+    <label for="password">Enter password:</label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <div style="color:orangered" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Age error</div>
+    <br/>
+
+    <label for="age">Enter age:</label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:orangered" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
+    <br/>
+
+    <label for="email">Enter email:</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:orangered" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+    <br/>
+
+    <label for="roles">Choose role(s)
+        <select size="3" multiple="multiple" name="rolesId" id="roles">
+            <option disabled>Roles:</option>
+            <option value="ROLE_ADMIN">ADMIN</option>
+            <option selected value="ROLE_USER">USER</option>
+        </select>
+    </label>
+    <br/>
+
+
+
+    <input type="submit" value="Update!"/>
+</form>
+
+<hr>
+<form action="/logout" method="GET">
+    <button type="submit">Logout</button>
+</form>
+
+</body>
+</html>
