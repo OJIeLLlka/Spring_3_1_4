@@ -43,10 +43,11 @@ public class User implements UserDetails {
 
     }
 
-    public User(String name, byte age, String email) {
+    public User(String name, String password, byte age, String email) {
         this.name = name;
         this.email = email;
         this.age = age;
+        this.password = password;
     }
 
     public byte getAge() {
