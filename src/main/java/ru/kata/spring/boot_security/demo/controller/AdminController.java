@@ -37,13 +37,6 @@ public class AdminController {
         return "new_admin";
     }
 
-//    @GetMapping("/{id}")
-//    public String show(@PathVariable("id") long id, Model model) {
-//
-//        model.addAttribute("user", userService.getUserById(id));
-//        return "admin";
-//    }
-
     @PostMapping
     public String create(@ModelAttribute("newUser") @Valid User user,
                          @RequestParam(value = "rolesId") String[] roles, BindingResult bindingResult) {
@@ -57,14 +50,6 @@ public class AdminController {
         userService.saveUser(user);
         return "redirect:/admin";
     }
-
-    //РЕДАКТИРОВАНИЕ ЮЗЕРА
-//    @GetMapping("/{id}/edit")
-//    public String edit(@PathVariable("id") long id, Model model) {
-//
-//        model.addAttribute("user", userService.getUserById(id));
-//        return "edit";
-//    }
 
     @PostMapping("/{id}")
     public String update(@ModelAttribute("user") @Valid User user,
