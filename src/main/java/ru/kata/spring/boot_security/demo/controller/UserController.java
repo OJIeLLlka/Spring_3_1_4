@@ -23,6 +23,6 @@ public class UserController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByUsername(auth.getName());
         model.addAttribute("user", user);
-        return "user";
+        return "role_user";
     }
 }

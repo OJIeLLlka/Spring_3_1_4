@@ -31,14 +31,14 @@ public class User implements UserDetails {
     private byte age;
 
     @Column
-    @NotEmpty(message = "email name should not be empty")
+    @NotEmpty(message = "email should not be empty")
     @Email(message = "Invalid email")
     private String email;
 
     @Column
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "users_role",
-            joinColumns = {@JoinColumn(name = "User_id", referencedColumnName = "id")},
+            joinColumns = {@JoinColumn(name = "users_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "roles_id", referencedColumnName = "id")})
     private Set<Role> roles;
 
