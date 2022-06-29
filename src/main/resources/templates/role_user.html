@@ -19,9 +19,9 @@
 
                 <div class="collapse navbar-collapse show" id="navbarDark">
                     <ul class="navbar-nav mr-auto">
-                        <span class="align-middle font-weight-bold mr-1" th:text="${user.email}"></span></b>
+                        <span id="topEmail" class="align-middle font-weight-bold mr-1"></span></b>
                         <span class="align-middle mr-1">with roles:</span>
-                        <span class="align-middle" th:text="${user.getRoles()}"></span>
+                        <span id="topRoles" class="align-middle"></span>
                     </ul>
                     <ul class="navbar-nav ml-md-auto">
                         <form action="/logout" method="get">
@@ -39,8 +39,8 @@
 
                 <div class="col-md-2">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill"
-                           sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" href="#ROLE_USER"
+                        <a class="nav-link active" id="userRoleInfoButton" data-toggle="pill"
+                           sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" href="#user"
                            role="tab" aria-controls="v-pills-profile" aria-selected="false">User</a>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
 
 
                         <!--                                                 USER'S CONTENT-->
-                        <div class="tab-pane fade show active" id="ROLE_USER" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <h3>User info</h3>
                             <table class="table table-hover">
                                 <thead>
@@ -67,13 +67,9 @@
                                     <th>Roles</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="RoleUserInfo">
                                 <tr>
-                                    <td th:text="${user.id}">id</td>
-                                    <td th:text="${user.name}">name</td>
-                                    <td th:text="${user.age}">age</td>
-                                    <td th:text="${user.email}">email</td>
-                                    <td th:text="${user.roles}">roles</td>
+
                                 </tr>
                                 </tbody>
                             </table>
@@ -91,5 +87,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/user_role.js"></script>
 </body>
 </html>

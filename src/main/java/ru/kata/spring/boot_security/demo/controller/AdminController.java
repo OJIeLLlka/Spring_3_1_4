@@ -37,36 +37,36 @@ public class AdminController {
         return "new_admin";
     }
 
-    @PostMapping
-    public String create(@ModelAttribute("newUser") @Valid User user,
-                         @RequestParam(value = "rolesId") String[] roles, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            return "new_admin";
-        }
-
-        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toSet()));
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        userService.saveUser(user);
-        return "redirect:/admin";
-    }
-
-    @PostMapping("/{id}")
-    public String update(@ModelAttribute("user") @Valid User user,
-                         @RequestParam(value = "rolesId") String[] roles, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "new_admin";
-        }
-
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toSet()));
-        userService.updateUser(user);
-        return "redirect:/admin";
-    }
-
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id) {
-        userService.removeUserById(id);
-        return "redirect:/admin";
-    }
+//    @PostMapping
+//    public String create(@ModelAttribute("newUser") @Valid User user,
+//                         @RequestParam(value = "rolesId") String[] roles, BindingResult bindingResult) {
+//
+//        if (bindingResult.hasErrors()) {
+//            return "new_admin";
+//        }
+//
+//        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toSet()));
+//        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+//        userService.saveUser(user);
+//        return "redirect:/admin";
+//    }
+//
+//    @PostMapping("/{id}")
+//    public String update(@ModelAttribute("user") @Valid User user,
+//                         @RequestParam(value = "rolesId") String[] roles, BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            return "new_admin";
+//        }
+//
+//        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+//        user.setRoles(Arrays.stream(roles).map(Role::new).collect(Collectors.toSet()));
+//        userService.updateUser(user);
+//        return "redirect:/admin";
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public String delete(@PathVariable("id") long id) {
+//        userService.removeUserById(id);
+//        return "redirect:/admin";
+//    }
 }

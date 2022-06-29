@@ -40,7 +40,9 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public User findByUsername(String username) {
-        return entityManager.createQuery("SELECT u FROM User u JOIN FETCH u.roles roles where u.name = :username", User.class)
+//        return entityManager.createQuery("SELECT u FROM User u JOIN FETCH u.roles roles where u.name = :username", User.class)
+//                .setParameter("username", username).getSingleResult();
+        return entityManager.createQuery("SELECT u FROM User u WHERE u.name = :username", User.class)
                 .setParameter("username", username).getSingleResult();
     }
 }
