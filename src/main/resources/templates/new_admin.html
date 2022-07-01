@@ -86,44 +86,9 @@
                     <th>Delete</th>
                   </tr>
                   </thead>
-                  <tbody id="data">
+                  <tbody class="data">
 
-                  <tr th:each="user :${users}">
-<!--                    <td th:text="${user.id}">id</td>-->
-<!--                    <td th:text="${user.name}">name</td>-->
-<!--                    <td th:text="${user.age}">age</td>-->
-<!--                    <td th:text="${user.email}">email</td>-->
-<!--                    <td th:text="${user.roles}">roles</td>-->
-<!--                                                        JS SCRIPT FOR TABLE-->
-<!--                    <script>-->
-<!--                      fetch("http://localhost:8080/api/users").then(-->
-<!--                              res=>{-->
-<!--                                res.json().then(-->
-<!--                                        data=>{-->
-<!--                                          if (data.length > 0) {-->
-<!--                                            var temp = "";-->
-
-<!--                                            //start for loop-->
-<!--                                            data.forEach((u)=>{-->
-<!--                                              temp +="<tr>";-->
-<!--                                              temp +="<td>" + u.id + "</td>";-->
-<!--                                              temp +="<td>" + u.username + "</td>";-->
-<!--                                              temp +="<td>" + u.age + "</td>";-->
-<!--                                              temp +="<td>" + u.email + "</td>";-->
-<!--                                              temp +="<td>" + u.roles.map((role) => role.name === "ROLE_USER" ? "USER" : "ADMIN") + "</td>";-->
-<!--                                              // temp +="<td>" + <button type="button" class="btn btn-primary" data-toggle="modal" id="edit-modal" dat>Edit</button>-->
-<!--                                            })-->
-<!--                                            //close for loop-->
-<!--                                            document.getElementById("data").innerHTML = temp;-->
-<!--                                          }-->
-<!--                                        }-->
-<!--                                )-->
-<!--                              }-->
-<!--                      )-->
-<!--                    </script>-->
-
-
-
+<!--                  <tr >-->
                     <!--                                    MODAL EDIT-->
 <!--                    <button type="button" id="editBtn" class="btn btn-primary eBtn" data-toggle="modal" th:href="${'#editModal'}" data-whatever="@mdo">Edit</button>-->
                       <div class="MyForm">
@@ -224,7 +189,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" data-dismiss="modal" id="submitDelete" class="btn btn-danger">Delete</button>
+                                <input type="submit" data-dismiss="modal" id="submitDelete" value="Delete" class="btn btn-danger"/>
                               </div>
                             </div>
                           </div>
@@ -233,7 +198,7 @@
 <!--                    </td>-->
 
 
-                  </tr>
+<!--                  </tr>-->
                   </tbody>
                 </table>
 

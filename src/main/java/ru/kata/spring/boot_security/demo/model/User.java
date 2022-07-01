@@ -1,6 +1,7 @@
 package ru.kata.spring.boot_security.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
@@ -37,7 +38,8 @@ public class User implements UserDetails {
     private String email;
 
     @Column
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
+    @Cascade(value = org.hibernate.annotations.CascadeType.PERSIST)
     @JoinTable(name = "users_role",
             joinColumns = {@JoinColumn(name = "users_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "roles_id", referencedColumnName = "id")})
