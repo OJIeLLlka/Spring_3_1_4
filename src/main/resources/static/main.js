@@ -5,6 +5,7 @@ const addNewUserButton = document.getElementById('addNewUserBtn')
 const home = document.getElementById('home-tab')
 const userInfo = document.getElementById('roleUser')
 const editRoles = document.getElementById('editRoles')
+const newRoles = document.getElementById('newRoles')
 
 
 //TOP INFO
@@ -18,25 +19,6 @@ fetch(`${url}/principal`).then(
             })
     })
 
-function getRoles() {
-    let roles = Array.from(editRoles.selectedOptions)
-        .map(option => option.value);
-    let addedRoles = [];
-    console.log(roles)
-    if (roles.includes("ROLE_ADMIN")) {
-        let role1 = {
-            name: "ROLE_ADMIN"
-        }
-        addedRoles.push(role1);
-    }
-    if (roles.includes("ROLE_USER")) {
-        let role2 = {
-            name: "ROLE_USER"
-        }
-        addedRoles.push(role2);
-    }
-    return addedRoles;
-}
 
 //ТАБЛИЦА ЮЕЗРОВ
 function showTable() {
@@ -113,7 +95,6 @@ editSubmitPressed.addEventListener('click', async (e) => {
     showTable();
 })
 
-
 // show delete
 let currentUserId;
 async function showDeleteUser(id) {
@@ -153,7 +134,7 @@ addNewUserButton.addEventListener('click', async (e) => {
         password: document.getElementById('newPassword').value,
         age: document.getElementById('newAge').value,
         email: document.getElementById('newEmail').value,
-        roles: Array.from(document.getElementById('newRoles').selectedOptions)
+        roles: Array.from(newRoles.selectedOptions)
             .map(option => option.value)
     };
 
@@ -171,7 +152,7 @@ addNewUserButton.addEventListener('click', async (e) => {
 
 function showPrincipal(idButton, idForm) {
     idButton.addEventListener('click', (e) => {
-
+        e.preventDefault()
         let out = "";
         fetch(`${url}/principal`, {
             method: 'GET',
@@ -187,7 +168,7 @@ function showPrincipal(idButton, idForm) {
                             <td>${principal.roles.map((role) => role.name === "ROLE_USER" ? "USER" : "ADMIN")}</td>                            
                         </tr>    
                         `;
-                console.log('eto function')
+                console.log('eto show user-principal function')
                 idForm.innerHTML = out;
             })
     })
